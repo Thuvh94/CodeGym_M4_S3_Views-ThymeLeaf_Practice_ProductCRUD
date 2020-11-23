@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+<div th:if="${success}">
+    <span style="color: red" th:text="${success}"></span>
+</div>
+<div th:if="${remove}">
+    <span style="color: red" th:text="${remove}"></span>
+</div>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+    </tr>
+    <tbody th:each="product : ${products}">
+    <tr>
+        <td th:text="${product.id}"></td>
+        <td th:text="${product.name}"></td>
+        <td th:text="${product.price}"></td>
+        <td><a th:href="@{/edit(id=${product.id})}">Edit</a></td>
+        <td><a th:href="@{/delete(id=${product.id})}">Delete</a></td>
+        <td><a th:href="@{/view(id=${product.id})}">View</a></td>
+    </tr>
+    </tbody>
+</table>
+<br>
+<a th:href="@{/create}">Create</a>
+</body>
+</html>
